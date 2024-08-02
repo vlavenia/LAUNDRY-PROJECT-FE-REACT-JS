@@ -1,7 +1,10 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:8010/proxy/api/v1",
+  // baseURL: "http://localhost:8010/proxy/api/v1",
+  // baseURL: import.meta.env.VITE_API_URL,
+  // baseURL: "http://localhost:8888/api/v1",
+  baseURL: "/api/v1",
 });
 
 export const tokenCurr =

@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <div className=" shadow-md col-span-1 row-span-6 bg-white rounded-xl">
       <div class="relative flex h-full w-full max-w-[20rem] flex-col rounded-xl bg-white bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5">
         <div class="p-4 mb-2">
-          <p class="block font-sans text-xl antialiased font-bold text-2xl leading-snug tracking-normal">
+          <p class="block font-sans antialiased font-bold text-2xl leading-snug tracking-normal">
             Enigma Laundry.
           </p>
         </div>
@@ -29,7 +30,7 @@ const Sidebar = () => {
                 ></path>
               </svg>
             </div>
-            Transaction
+            <Link to={"/transaction"}>Transaction</Link>
           </div>
           <div
             role="button"
@@ -50,7 +51,7 @@ const Sidebar = () => {
                 ></path>
               </svg>
             </div>
-            Customer
+            <Link to={"/customer"}>Customer</Link>
           </div>
           <div
             role="button"
@@ -71,7 +72,7 @@ const Sidebar = () => {
                 ></path>
               </svg>
             </div>
-            Product
+            <Link to={"/product"}>Product</Link>
           </div>
         </nav>
       </div>

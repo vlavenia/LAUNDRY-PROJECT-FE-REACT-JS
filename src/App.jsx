@@ -1,75 +1,22 @@
-import { Card, CardBody } from "@nextui-org/react";
 import "./App.css";
 import React from "react";
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/react";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
+import { Route, Routes } from "react-router-dom";
+import LoginPage from "./Pages/auth/LoginPage";
+import RegisterPage from "./Pages/auth/RegisterPage";
+import CustomerPage from "./Pages/customer/CustomerPage";
+import TransactionPage from "./Pages/transaction/TransactionPage";
+import ProductPage from "./Pages/product/ProductPage";
 
 function App() {
   return (
     <>
-      <div className="h-screen">
-        <div className="bg-[#f4f6f6] grid grid-cols-6 grid-rows-6 h-full  w-full gap-6 p-6">
-          <Sidebar />
-          <Header />
-          {/* //table Transaksi */}
-          <div className="p-3 shadow-xl col-span-5 row-span-3 bg-white rounded-3xl flex flex-nowrap">
-            <Table aria-label="Example static collection table overscroll-auto">
-              <TableHeader>
-                <TableColumn>NAME</TableColumn>
-                <TableColumn>ROLE</TableColumn>
-                <TableColumn>STATUS</TableColumn>
-              </TableHeader>
-              <TableBody>
-                <TableRow key="1">
-                  <TableCell>Tony Reichert</TableCell>
-                  <TableCell>CEO</TableCell>
-                  <TableCell>Active</TableCell>
-                </TableRow>
-                <TableRow key="2">
-                  <TableCell>Zoey Lang</TableCell>
-                  <TableCell>Technical Lead</TableCell>
-                  <TableCell>Paused</TableCell>
-                </TableRow>
-                <TableRow key="3">
-                  <TableCell>Jane Fisher</TableCell>
-                  <TableCell>Senior Developer</TableCell>
-                  <TableCell>Active</TableCell>
-                </TableRow>
-                <TableRow key="4">
-                  <TableCell>William Howard</TableCell>
-                  <TableCell>Community Manager</TableCell>
-                  <TableCell>Vacation</TableCell>
-                </TableRow>
-                <TableRow key="4">
-                  <TableCell>William Howard</TableCell>
-                  <TableCell>Community Manager</TableCell>
-                  <TableCell>Vacation</TableCell>
-                </TableRow>
-                <TableRow key="4">
-                  <TableCell>William Howard</TableCell>
-                  <TableCell>Community Manager</TableCell>
-                  <TableCell>Vacation</TableCell>
-                </TableRow>
-                <TableRow key="4">
-                  <TableCell>William Howard</TableCell>
-                  <TableCell>Community Manager</TableCell>
-                  <TableCell>Vacation</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </div>
-          <Footer />
-        </div>
-      </div>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/customer" element={<CustomerPage />} />
+        <Route path="/transaction" element={<TransactionPage/>} />
+        <Route path="/product" element={<ProductPage />} />
+      </Routes>
     </>
   );
 

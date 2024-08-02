@@ -16,8 +16,8 @@ import {
 import TableComponent from "../../components/TableComponent";
 import {
   axiosInstance,
-  axiosInstanceOriginal,
-  tokenCurr,
+  // axiosInstanceOriginal,
+  // tokenCurr,
 } from "../../lib/axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
