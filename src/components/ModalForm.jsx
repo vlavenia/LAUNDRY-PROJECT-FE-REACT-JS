@@ -12,19 +12,18 @@ import {
   Link,
 } from "@nextui-org/react";
 
-export default function ModalFormTransaction() {
+export default function ModalFormTransaction({ title }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
 
   return (
     <>
       <Button
         className="bg-[#1d8348] rounded-md px-4 py-2 text-white"
         onPress={onOpen}
-        
       >
-        Add Transaction
+        Add {title}
       </Button>
+
       <Modal
         className="bg-slate-100"
         isOpen={isOpen}

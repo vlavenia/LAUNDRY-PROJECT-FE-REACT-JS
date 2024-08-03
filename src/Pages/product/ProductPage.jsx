@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import "./App.css";
+import "../../App.css";
 import {
   Table,
   TableHeader,
@@ -7,14 +7,20 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  Button,
 } from "@nextui-org/react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
 import { axiosInstance } from "../../lib/axios";
+import SkeletonTable from "../../components/SkeletonTable";
+import Editicon from "../../assets/Editicon.svg"
+import Deleteicon from "../../assets/Deleteicon.svg"
+import ActionButton from "../../components/ActionButton";
 
 function ProductPage() {
   const [product, setProduct] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
 
   let token = localStorage.getItem("token");
 
@@ -26,7 +32,7 @@ function ProductPage() {
         },
       });
       setProduct(response.data.data);
-      console.log(`Response`, response.data.data);
+      setIsLoading(false)
     } catch (error) {
       console.log(error);
     }
@@ -43,22 +49,36 @@ function ProductPage() {
         <Header Headertitle="Product" subtitle="Create your Product Easily" />
         {/* //table Transaksi */}
         <div className="p-3  shadow-xl col-span-5 row-span-3 bg-white rounded-3xl flex flex-nowrap">
-          <Table aria-label="Example static collection table overscroll-auto">
-            <TableHeader>
-              <TableColumn>Product Name</TableColumn>
-              <TableColumn>Price</TableColumn>
-              <TableColumn>Type</TableColumn>
-            </TableHeader>
-            <TableBody>
-              {product.map((item, idx) => (
-                <TableRow key={idx}>
-                  <TableCell>{item.name}</TableCell>
-                  <TableCell>{item.price}</TableCell>
-                  <TableCell>{item.type}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          {isLoading ? (
+            Array(4)
+              .fill(null)
+              .map((d, i) => {
+                return <SkeletonTable />;
+              })
+          ) : (
+            <Table aria-label="Example static collection table overscroll-auto">
+              <TableHeader>
+                <TableColumn>Product Name</TableColumn>
+                <TableColumn>Price</TableColumn>
+                <TableColumn>Type</TableColumn>
+                <TableColumn className=" w-[45px] text-center">
+                  Action
+                </TableColumn>
+              </TableHeader>
+              <TableBody>
+                {product.map((item, idx) => (
+                  <TableRow key={idx}>
+                    <TableCell>{item.name}</TableCell>
+                    <TableCell>{item.price}</TableCell>
+                    <TableCell>{item.type}</TableCell>
+                    <TableCell>
+                      <ActionButton/>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
         </div>
         <Footer />
       </div>
